@@ -1,0 +1,31 @@
+﻿@model List<MyPlace.ViewModels.ImageViewModel>
+
+@{
+    ViewData["Title"] = "Feed";
+}
+
+    @*<form asp-action="Overview">
+        <div class="form-inline">
+            <input type="text" name="username" class="form-control" />
+            <input type="submit" class="btn btn-primary" value="Search" />
+        </div>
+    </form>*@
+
+
+<div class="row" style="margin-top:2%">
+    @foreach (var image in Model)
+    {
+        if (image.IsPrivate == false)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@image.ImageUrl" width="100" height="100">
+                    <div class="card-body">
+                        <a asp-controller="User" asp-action="AccountOverview" asp-route-userId="@image.CreatedBy" class="card-title">@image.CreatedBy</a>
+                        <p class="card-text">@image.DateCreated</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

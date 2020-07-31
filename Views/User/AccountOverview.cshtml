@@ -1,0 +1,25 @@
+﻿@model MyPlace.ViewModels.UserDetailsModel
+
+@{
+    ViewData["Title"] = "AccountOverview";
+}
+
+<h1>AccountOverview</h1>
+
+<div class="row">
+    @foreach (var image in Model.Images)
+    {
+        if (image.IsPrivate == false)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@image.ImageUrl">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.UserId</h5>
+                        <p class="card-text">@image.DateCreated</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
